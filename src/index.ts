@@ -2,13 +2,13 @@ import { apiConfig, resourceType } from "./types";
 import { generateDataUrl } from "./url";
 
 // core function to generate apis
-export const resolvePromiseAction = (response) => {
+const resolvePromiseAction = (response) => {
   return Promise.resolve(response?.data);
 };
-export const rejectPromiseAction = (error) => {
+const rejectPromiseAction = (error) => {
   return Promise.reject(error);
 };
-export const fetchAPI = async (func) => {
+const fetchAPI = async (func) => {
   try {
     const response = await func;
     return resolvePromiseAction(response);
@@ -18,7 +18,7 @@ export const fetchAPI = async (func) => {
 };
 
 // recursive function use to build chaning operation for client
-export const apiFactory = (client, resource, baseUrl: () => string, rname: string | undefined = undefined): any => {
+const apiFactory = (client, resource, baseUrl: () => string, rname: string | undefined = undefined): any => {
   function url(queryPayload = {}) {
     let Url = baseUrl();
     if (Object.keys(queryPayload).length !== 0) return generateDataUrl(Url, queryPayload);
@@ -51,7 +51,7 @@ export const apiFactory = (client, resource, baseUrl: () => string, rname: strin
 };
 
 // will take resources array and give api client with chaning
-export const generate = (client, resources: resourceType, baseUrl: () => string): any => {
+const generate = (client, resources: resourceType, baseUrl: () => string): any => {
   const result = {};
   resources.forEach((resource) => {
     const { key, name = key } = resource;
@@ -61,3 +61,6 @@ export const generate = (client, resources: resourceType, baseUrl: () => string)
   });
   return result;
 };
+
+export { generate };
+export type { resourceType, rType, apiConfig } from "./types";

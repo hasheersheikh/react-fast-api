@@ -1,6 +1,6 @@
 {
   "name": "react-fast-api",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A TypeScript-based API Client for React",
   "main": "dist/index.js",
   "scripts": {
@@ -18,7 +18,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/your-username/react-fast-api.git"
+    "url": "git+https://github.com/hasheersheikh/react-fast-api.git"
   },
   "dependencies": {
     "axios": "^1.7.9"
